@@ -38,7 +38,7 @@ resource from 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
 
   name: 'from'
   properties: {
-    value: 'adrian@nypd.net'
+    value: '"adrianasg335@nypd.net"'
     isEncrypted: false
   }
 }
@@ -46,7 +46,7 @@ resource bcc 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
   parent: automationAccount
   name: 'bcc'
   properties: {
-    value: 'adrian@nypd.net'
+    value: '"adrsfhian@nypd.net"'
     isEncrypted: false
   }
 }
@@ -82,8 +82,8 @@ resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-05-15-pr
       uri: 'https://raw.githubusercontent.com/adrimus/bicep/refs/heads/main/runbook/test.ps1'
       version: '1.0.0'
     }
-    runtimeEnvironment: 'PowerShell-74'
-    runbookType: 'Script'
+    runtimeEnvironment: PowerShellruntimeEnvironment.name
+    runbookType: 'PowerShell'
   }
 }
 
@@ -104,7 +104,7 @@ resource jobSchedule 'Microsoft.Automation/automationAccounts/jobSchedules@2023-
   name: jobScheduleName
   properties: {
     runbook: {
-      name: runbookName
+      name: runbook.name
     }
     schedule: {
       name: schedule.name
