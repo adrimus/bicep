@@ -106,9 +106,9 @@ resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-05-15-pr
     publishContentLink: {
       contentHash: {
         algorithm: 'SHA256'
-        value: '9CE84FFFA1EB8FED62639FA8C5CA2F6E4EB3CD7963635BCF38BF0D8B255EC76B'
+        value: '715B29F6D7CFCB23DD37C5554380708A0442F641342C8F709EB8ECD047C9D1B9'
       }
-      uri: 'https://raw.githubusercontent.com/adrimus/bicep/refs/heads/main/runbook/test.ps1?token=GHSAT0AAAAAAC75UVO7RTWAHKZFGCBZJSSMZ6G5R2Q'
+      uri: 'https://raw.githubusercontent.com/adrimus/bicep/refs/heads/main/runbook/test.ps1'
       version: '1.0.0'
     }
     runtimeEnvironment: 'PowerShell-74'
