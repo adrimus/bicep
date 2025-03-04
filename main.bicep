@@ -66,35 +66,6 @@ resource PowerShellruntimeEnvironment 'Microsoft.Automation/automationAccounts/r
   tags: resourceTags
 }
 
-// Add required modules
-resource graphUsersModule 'Microsoft.Automation/automationAccounts/modules@2023-11-01' = {
-  parent: automationAccount
-  name: 'Microsoft.Graph.Users'
-  properties: {
-    contentLink: {
-      uri: 'https://www.powershellgallery.com/api/v2/package/Microsoft.Graph.Users'
-    }
-  }
-}
-resource graphAuthModule 'Microsoft.Automation/automationAccounts/modules@2023-11-01' = {
-  parent: automationAccount
-  name: 'Microsoft.Graph.Authentication'
-  properties: {
-    contentLink: {
-      uri: 'https://www.powershellgallery.com/api/v2/package/Microsoft.Graph.Authentication'
-    }
-  }
-}
-resource graphMailModule 'Microsoft.Automation/automationAccounts/modules@2023-11-01' = {
-  parent: automationAccount
-  name: 'Microsoft.Graph.Users.Actions'
-  properties: {
-    contentLink: {
-      uri: 'https://www.powershellgallery.com/api/v2/package/Microsoft.Graph.Users.Actions'
-    }
-  }
-}
-
 resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-05-15-preview' = {
   parent: automationAccount
   name: runbookName
@@ -112,7 +83,7 @@ resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-05-15-pr
       version: '1.0.0'
     }
     runtimeEnvironment: 'PowerShell-74'
-    runbookType: 'PowerShell'
+    runbookType: 'Script'
   }
 }
 
