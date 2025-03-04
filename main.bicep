@@ -33,7 +33,7 @@ resource automationAccount 'Microsoft.Automation/automationAccounts@2023-11-01' 
 }
 
 // This is to provide script with a from and bcc email address
-resource from 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
+resource fromEmail 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
   parent: automationAccount
 
   name: 'from'
@@ -42,7 +42,7 @@ resource from 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
     isEncrypted: false
   }
 }
-resource bcc 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
+resource bccEmail 'Microsoft.Automation/automationAccounts/variables@2023-11-01' = {
   parent: automationAccount
   name: 'bcc'
   properties: {
