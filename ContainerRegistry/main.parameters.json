@@ -1,0 +1,19 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "acrSku": {
+            "value": "Basic"
+        },
+        "containerRegistryName": {
+            "value": "crdockerprod001"
+        },
+        "resourceTags": {
+            "value": {
+                "Environment": "Prod",
+                "CostCentre": "IT",
+                "Application": "docker"
+            }
+        }
+    }
+}
