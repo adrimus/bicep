@@ -36,6 +36,14 @@ $deploymentParams = @{
 New-AzResourceGroupDeployment @deploymentParams
 ```
 
+## Using the paramters file
+
+```powershell
+new-azresourceGroupDeployment -TemplateParameterFile .\main.parameters.json -TemplateFile .\main.bicep
+
+```
+
+
 ### Get file hash for runbook
 
 ```powershell

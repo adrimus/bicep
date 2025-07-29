@@ -1,20 +1,18 @@
 param location string = resourceGroup().location
 param automationAccountName string
-param runbookName string = 'MyRunbook'
-param resourceTags object = {
-  CostCentre: 'IT'
-}
+param runbookName string
+param resourceTags object
 
 // Schedule parameters
 param baseTime string = utcNow('u')
 @description('The start time of the schedule must be at least 5 minutes after the time you create the schedule, PT1H is onehour')
 param scheduleStartTime string = dateTimeAdd(baseTime, 'PT1H')
-param scheduleName string = 'Weekly'
+param scheduleName string
 
 @minLength(36)
 @maxLength(36)
 @description('Used to link the schedule to the runbook')
-param jobScheduleName string =  guid(resourceGroup().id)
+param jobScheduleName string = guid(resourceGroup().id)
 
 resource automationAccount 'Microsoft.Automation/automationAccounts@2023-11-01' = {
   identity: {
@@ -62,8 +60,24 @@ resource PowerShellruntimeEnvironment 'Microsoft.Automation/automationAccounts/r
       language: 'PowerShell'
       version: '7.4'
     }
+    defaultPackages: {
+      Az: '12.3.0'
+      'Azure CLI': '2.64.0'
+    }
+
   }
   tags: resourceTags
+}
+
+resource graphModule 'Microsoft.Automation/automationAccounts/runtimeEnvironments/packages@2023-05-15-preview' = {
+  parent: PowerShellruntimeEnvironment
+  name: 'Microsoft.Graph.Users'
+  properties: {
+    contentLink: {
+      uri: 'https://www.powershellgallery.com/api/v2/package/Microsoft.Graph.Users/2.26.1'
+      version: '2.26.1'
+    }
+  }
 }
 
 resource runbook 'Microsoft.Automation/automationAccounts/runbooks@2023-05-15-preview' = {
