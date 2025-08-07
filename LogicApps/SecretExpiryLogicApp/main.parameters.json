@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "logic_App_Name": {
+            "value": "logic-secret-expiry-notifier"
+        },
+        "fromMailboxAddress": {
+            "value": "cloudops@example.com"
+        },
+        "toMailboxAddress": {
+            "value": "alerts@example.com"
+        },
+        "resourceTags": {
+            "value": {
+                "Environment": "Production",
+                "CostCentre": "IT",
+                "Application": "EntraSecretExpiry",
+                "StartDate" : "2025-28-02",
+                "Requester" : "cloudops@example.com"
+            }
+        }
+    }
+}
